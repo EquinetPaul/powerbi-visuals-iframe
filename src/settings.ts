@@ -32,43 +32,18 @@ import FormattingSettingsCard = formattingSettings.SimpleCard;
 import FormattingSettingsSlice = formattingSettings.Slice;
 import FormattingSettingsModel = formattingSettings.Model;
 
-/**
- * Data Point Formatting Card
- */
-class DataPointCardSettings extends FormattingSettingsCard {
-    defaultColor = new formattingSettings.ColorPicker({
-        name: "defaultColor",
-        displayName: "Default color",
-        value: { value: "" }
+class DataCardSettings extends FormattingSettingsCard {
+
+    persist = new formattingSettings.TextInput({
+        name: "content",
+        displayName: "URL",
+        value: "",
+        placeholder : "URL"
     });
 
-    showAllDataPoints = new formattingSettings.ToggleSwitch({
-        name: "showAllDataPoints",
-        displayName: "Show all",
-        value: true
-    });
-
-    fill = new formattingSettings.ColorPicker({
-        name: "fill",
-        displayName: "Fill",
-        value: { value: "" }
-    });
-
-    fillRule = new formattingSettings.ColorPicker({
-        name: "fillRule",
-        displayName: "Color saturation",
-        value: { value: "" }
-    });
-
-    fontSize = new formattingSettings.NumUpDown({
-        name: "fontSize",
-        displayName: "Text Size",
-        value: 12
-    });
-
-    name: string = "dataPoint";
-    displayName: string = "Data colors";
-    slices: Array<FormattingSettingsSlice> = [this.defaultColor, this.showAllDataPoints, this.fill, this.fillRule, this.fontSize];
+    name: string = "persist";
+    displayName: string = "Data";
+    slices: Array<FormattingSettingsSlice> = [this.persist];
 }
 
 /**
@@ -76,8 +51,8 @@ class DataPointCardSettings extends FormattingSettingsCard {
 *
 */
 export class VisualFormattingSettingsModel extends FormattingSettingsModel {
-    // Create formatting settings model formatting cards
-    dataPointCard = new DataPointCardSettings();
 
-    cards = [this.dataPointCard];
+    dataCard = new DataCardSettings();
+
+    cards = [this.dataCard];
 }

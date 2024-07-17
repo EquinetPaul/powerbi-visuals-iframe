@@ -1,52 +1,19 @@
 {
     "dataRoles": [
         {
-            "displayName": "Category Data",
-            "name": "category",
-            "kind": "Grouping"
-        },
-        {
-            "displayName": "Measure Data",
-            "name": "measure",
+            "displayName": "URL",
+            "name": "URL",
             "kind": "Measure"
         }
     ],
     "objects": {
-        "dataPoint": {
+        "persist": {
+            "displayName": "URL",
             "properties": {
-                "defaultColor": {
+                "content": {
+                    "displayName": "URL",
                     "type": {
-                        "fill": {
-                            "solid": {
-                                "color": true
-                            }
-                        }
-                    }
-                },
-                "showAllDataPoints": {
-                    "type": {
-                        "bool": true
-                    }
-                },
-                "fill": {
-                    "type": {
-                        "fill": {
-                            "solid": {
-                                "color": true
-                            }
-                        }
-                    }
-                },
-                "fillRule": {
-                    "type": {
-                        "fill": {}
-                    }
-                },
-                 "fontSize": {
-                    "type": {
-                        "formatting": {
-                            "fontSize": true
-                        }
+                        "text": true
                     }
                 }
             }
@@ -54,26 +21,28 @@
     },
     "dataViewMappings": [
         {
-            "categorical": {
-                "categories": {
-                    "for": {
-                        "in": "category"
-                    },
-                    "dataReductionAlgorithm": {
-                        "top": {}
+            "conditions": [
+                {
+                    "URL": {
+                        "max": 1
                     }
-                },
-                "values": {
-                    "select": [
-                        {
-                            "bind": {
-                                "to": "measure"
-                            }
-                        }
-                    ]
                 }
+            ],
+            "single": {
+                "role": "URL"
             }
         }
     ],
-    "privileges": []
+    "privileges": [
+        {
+            "name": "WebAccess",
+            "essential": true,
+            "parameters": [
+                "DOMAIN1",
+                "DOMAIN2"
+            ]
+        }
+    ],
+    "supportsLandingPage": true,
+    "supportsEmptyDataView": true
 }
